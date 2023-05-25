@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import loginImage from "../assets/login.jpg";
+import { Authapi } from "../Authapi/Auth";
+import { toast } from "react-toastify";
+
 const Login = () => {
+  const [credential,setcredential]=useState({
+    email:"",
+    password:""
+  })
+  const credentialcheck=(e)=>{
+    setcredential({...credential,
+    [e.target.name]:e.target.value
+  })
+  }
+  const logged=async()=>{
+     try{
+      if(credential.email!=="" && credential.password!==""){
+        const hlo=await Authapi(credential.email ,credential.password);
+        toast.success("successfully sign to Easytrip");
+         navigate('/')
+      }
+      
+      }catch(error){
+         toast.error("pls check your credential")
+            }
+          
+   
+  
+
+  }
   return (
     <section className="relative flex h-[100vh] flex-col items-center justify-center gap-10 md:flex-row">
       {/* LOGO */}
@@ -28,12 +56,16 @@ const Login = () => {
           className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
           type="text"
           placeholder="Enter your Email"
+          onChange={credentialcheck}
+          name="email"
         />
         <input
           className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
           type="password"
           name="password"
           placeholder="Enter your Password"
+          onChange={credentialcheck}
+        
         />
         <p className="text-sm">
           Don't have a account?{" "}
@@ -43,7 +75,9 @@ const Login = () => {
         </p>
         <button
           type="button"
-          className="w-3/4 rounded-md bg-blue-900 px-2 py-1 text-white hover:bg-blue-800 active:bg-blue-950"
+          className="w-3/4 rounded-md bg-blue-900 px-2 py-1
+           text-white hover:bg-blue-800 active:bg-blue-950"
+           onClick={logged}
         >
           Login
         </button>
