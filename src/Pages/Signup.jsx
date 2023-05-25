@@ -1,28 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import loginImage from "../assets/login.jpg";
-import { Authapi } from "../Authapi/Auth";
-import { toast } from "react-toastify";
-
-const Login = () => {
-  const [credential, setcredential] = useState({
-    email: "",
-    password: "",
-  });
-  const credentialcheck = (e) => {
-    setcredential({ ...credential, [e.target.name]: e.target.value });
-  };
-  const logged = async () => {
-    try {
-      if (credential.email !== "" && credential.password !== "") {
-        const hlo = await Authapi(credential.email, credential.password);
-        toast.success("successfully sign to Easytrip");
-        navigate("/");
-      }
-    } catch (error) {
-      toast.error("pls check your credential");
-    }
-  };
+import signupImage from "../assets/signup.jpg";
+const Signup = () => {
   return (
     <section className="relative flex h-[100vh] flex-col items-center justify-center gap-10 md:flex-row">
       {/* LOGO */}
@@ -37,9 +16,9 @@ const Login = () => {
         <p className="text-2xl font-bold text-white md:text-black">Easy Trip</p>
       </button>
       {/* Greeting */}
-      <div className="w-full bg-black bg-opacity-50 py-2 text-center md:hidden">
+      <div className="w-full bg-black bg-opacity-50 p-2 text-center md:hidden">
         <h1 className="text-xl font-bold text-white">
-          <span className="text-2xl">Hey There!</span> Planning a vacation?
+          <span className="text-2xl">Welcome Back!</span> Planning a vacation?
         </h1>
         <p className="text-slate-200">Please enter your credentials</p>
       </div>
@@ -48,30 +27,36 @@ const Login = () => {
         <input
           className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
           type="text"
+          placeholder="Enter your Name"
+        />
+        <input
+          className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
+          type="text"
           placeholder="Enter your Email"
-          onChange={credentialcheck}
-          name="email"
         />
         <input
           className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
           type="password"
           name="password"
           placeholder="Enter your Password"
-          onChange={credentialcheck}
+        />
+        <input
+          className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
+          type="password"
+          name="password"
+          placeholder="Confirm your Password"
         />
         <p className="text-sm">
-          Don't have a account?{" "}
-          <Link className="text-blue-600" to={"/signup"}>
-            Create One
+          Already have account?{" "}
+          <Link className="text-blue-600" to={"/login"}>
+            Login
           </Link>
         </p>
         <button
           type="button"
-          className="w-3/4 rounded-md bg-blue-900 px-2 py-1
-           text-white hover:bg-blue-800 active:bg-blue-950"
-          onClick={logged}
+          className="w-3/4 rounded-md bg-blue-900 px-2 py-1 text-white hover:bg-blue-800 active:bg-blue-950"
         >
-          Login
+          Sign Up
         </button>
         {/* LOGO-MD */}
         <button className="absolute top-5 hidden items-center gap-2 overflow-hidden rounded-lg p-3 backdrop-blur-sm md:flex">
@@ -91,13 +76,13 @@ const Login = () => {
       <div className="absolute inset-0 -z-50 h-full md:relative md:w-1/2">
         <img
           className="h-full w-full object-cover"
-          src={loginImage}
-          alt="loginImage"
+          src={signupImage}
+          alt="signupImage"
         />
         {/* Greeting-MD */}
-        <div className="absolute hidden w-full bg-black bg-opacity-50 py-2 text-center md:top-[30%] md:block">
+        <div className="absolute hidden w-full bg-black bg-opacity-50 p-2 text-center md:top-[30%] md:block">
           <h1 className="text-xl font-bold text-white">
-            <span className="text-2xl">Hey There!</span> Planning a vacation?
+            <span className="text-2xl">Welcome Back!</span> Planning a vacation?
           </h1>
           <p className="text-slate-200">Please enter your credentials</p>
         </div>
@@ -106,4 +91,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

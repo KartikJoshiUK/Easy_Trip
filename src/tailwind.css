@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "Hinglish";
+  src: url("../src//assets//font/SAMARN__.TTF");
+}
