@@ -1,7 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.jpg";
+import { Authapi } from "../Authapi/Auth";
+import { toast } from "react-toastify";
+import AuthOptions from "../Components/AuthOptions";
+
 const Login = () => {
+  const navigate = useNavigate();
+  const [credential, setcredential] = useState({
+    email: "",
+    password: "",
+  });
+  const credentialcheck = (e) => {
+    setcredential({ ...credential, [e.target.name]: e.target.value });
+  };
+  const logged = async (e) => {
+    e.preventDefault();
+    try {
+      if (credential.email !== "" && credential.password !== "") {
+        const hlo = await Authapi(credential.email, credential.password);
+        toast.success("successfully sign to Easytrip");
+        navigate("/");
+      }
+    } catch (error) {
+      toast.error("pls check your credential");
+    }
+  };
   return (
     <section className="relative flex h-[100vh] flex-col items-center justify-center gap-10 md:flex-row">
       {/* LOGO */}
@@ -23,17 +47,24 @@ const Login = () => {
         <p className="text-slate-200">Please enter your credentials</p>
       </div>
       {/* Form */}
-      <form className="flex w-1/2 min-w-fit flex-col items-center justify-center gap-2 rounded-md bg-white bg-opacity-10 p-6 backdrop-blur-md md:relative md:h-full md:w-1/2 md:gap-3">
+      <form
+        className="flex w-1/2 min-w-fit flex-col items-center justify-center gap-2 rounded-md bg-white bg-opacity-10 p-6 backdrop-blur-md md:relative md:h-full md:w-1/2 md:gap-3"
+        onSubmit={logged}
+      >
         <input
-          className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
+          className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white md:text-black"
           type="text"
           placeholder="Enter your Email"
+          onChange={credentialcheck}
+          name="email"
         />
         <input
-          className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white"
+          style={{ color: "black" }}
+          className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white md:text-black"
           type="password"
           name="password"
           placeholder="Enter your Password"
+          onChange={credentialcheck}
         />
         <p className="text-sm">
           Don't have a account?{" "}
@@ -42,11 +73,13 @@ const Login = () => {
           </Link>
         </p>
         <button
-          type="button"
-          className="w-3/4 rounded-md bg-blue-900 px-2 py-1 text-white hover:bg-blue-800 active:bg-blue-950"
+          type="submit"
+          className="w-3/4 rounded-md bg-blue-900 px-2 py-1
+           text-white hover:bg-blue-800 active:bg-blue-950"
         >
           Login
         </button>
+        <AuthOptions type="login" />
         {/* LOGO-MD */}
         <button className="absolute top-5 hidden items-center gap-2 overflow-hidden rounded-lg p-3 backdrop-blur-sm md:flex">
           <div className="h-10 w-10 overflow-hidden rounded-full">
