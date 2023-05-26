@@ -7,9 +7,20 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={loggedIn ? <Home /> : <Login />} />
+        <Route exact path="/:sectionName" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="*" element={<Error404 />} />
+        <Route
+          exact
+          path="*"
+          element={
+            <Error404
+              message="Looks like you lost your way"
+              link="/"
+              linkText="Go to home"
+            />
+          }
+        />
       </Routes>
     </Router>
   );
