@@ -13,10 +13,10 @@ const BannerCard = ({ title, description }) => {
 };
 const Banner = () => {
   return (
-    <section className="relative flex h-[100vh] items-center justify-center p-10 lg:p-52">
+    <section className="relative flex h-[100vh] items-center justify-center p-10 lg:p-52 ">
       {/* INFORMATION */}
       <div className="mt-[10vh] flex min-h-[50%] flex-col items-center gap-8 p-6 text-white backdrop-blur-sm md:gap-10">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 z-0">
           <h1 className="text-center font-Hinglish text-5xl font-bold lg:text-7xl">
             Welcome to India
           </h1>
