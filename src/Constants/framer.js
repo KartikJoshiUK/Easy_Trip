@@ -1,12 +1,12 @@
 export const straggeredFadeIn = {
   initial: {
     opacity: 0,
-    translateY: 50,
+    translateX: -50,
   },
   animate: (delayIndex) => {
     return {
       opacity: 1,
-      translateY: 0,
+      translateX: 0,
       transition: {
         delay: delayIndex * 0.3,
         duration: 0.5,
@@ -17,7 +17,7 @@ export const straggeredFadeIn = {
 };
 
 export const FadeIn = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.3 } },
-  exit: { opacity: 0 },
+  initial: { opacity: 0.9, scale: 1.1 },
+  animate: { opacity: 1, scale: 1, transition: { duration: 2 } },
+  exit: { opacity: 0.9, scale: 1.1 },
 };

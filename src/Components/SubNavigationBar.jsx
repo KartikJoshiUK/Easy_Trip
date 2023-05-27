@@ -13,6 +13,7 @@ const SubNavigationBar = () => {
     <div className="flex items-end justify-center gap-1 md:gap-4">
       {buttons.map((button) => (
         <Link
+          key={button.title}
           className={`rounded-t-md bg-white px-2 transition-all hover:bg-opacity-100 hover:pb-5 md:px-4  ${
             params.views === button.state
               ? "bg-opacity-100 pb-5 pt-1 md:pt-3"

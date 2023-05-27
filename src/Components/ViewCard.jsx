@@ -4,9 +4,11 @@ import { straggeredFadeIn } from "../Constants/framer";
 const ViewCard = ({ data, delayIndex }) => {
   return (
     <motion.div
-      initial={straggeredFadeIn.initial}
-      animate={straggeredFadeIn.animate(delayIndex)}
-      exit={straggeredFadeIn.exit}
+      variants={{
+        rest: straggeredFadeIn.initial,
+        slideIn: straggeredFadeIn.animate(delayIndex),
+        hide: straggeredFadeIn.exit,
+      }}
       className="group w-36 text-center md:w-52"
     >
       <div className="aspect-square w-full overflow-hidden rounded-md transition-transform duration-300 group-hover:-translate-y-4">
