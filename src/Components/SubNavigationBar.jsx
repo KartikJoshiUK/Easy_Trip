@@ -13,10 +13,17 @@ const SubNavigationBar = () => {
     <div className="flex items-end justify-center gap-1 md:gap-4">
       {buttons.map((button) => (
         <Link
-          className={`rounded-t-md bg-white bg-opacity-50 px-2 py-1 transition-all hover:bg-opacity-100 hover:pb-5 md:px-4 md:py-3 ${
-            params.sectionName === button.state ? "bg-opacity-100 pb-5" : ""
+          className={`rounded-t-md bg-white px-2 transition-all hover:bg-opacity-100 hover:pb-5 md:px-4  ${
+            params.views === button.state
+              ? "bg-opacity-100 pb-5 pt-1 md:pt-3"
+              : "bg-opacity-50 py-1 md:py-3"
           } text-xs md:text-lg`}
           to={`/${button.state}`}
+          onClick={() => {
+            var scrollDiv = document.getElementById("views").offsetTop;
+            if (scrollDiv)
+              window.scrollTo({ top: scrollDiv, behavior: "smooth" });
+          }}
         >
           {button.title.toUpperCase()}
         </Link>
