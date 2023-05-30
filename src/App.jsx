@@ -7,7 +7,6 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={loggedIn ? <Home /> : <Login />} />
-        <Route exact path="/:views" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route

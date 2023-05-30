@@ -1,30 +1,26 @@
 import Banner from "../Containers/Banner";
 import { Navbar } from "../Components/Navbar";
-
-import { AnimatePresence } from "framer-motion";
+import Footer from "../Containers/Footer";
 import { viewsData } from "../Constants/test_data";
 import Views from "../Containers/Views";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createContext } from "react";
+import Contact from "../Containers/Contact";
+import Services from "../Containers/Services";
 
 export const HomeContext = createContext();
 const Home = () => {
-  const params = useParams();
   const [views, setViews] = useState(viewsData.states);
-  useEffect(() => {
-    if (params.views === undefined) setViews(viewsData.states);
-    else setViews(viewsData[params.views]);
-  }, [params]);
   return (
     <div>
       <Navbar />
-      <HomeContext.Provider value={{ views }}>
+      <HomeContext.Provider value={{ views, setViews }}>
         <Banner />
-        <AnimatePresence>
-          <Views />
-        </AnimatePresence>
+        <Views />
       </HomeContext.Provider>
+      <Services />
+      <Contact />
+      <Footer />
     </div>
   );
 };
