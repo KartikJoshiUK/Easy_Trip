@@ -1,4 +1,6 @@
 import Banner from "../Containers/Banner";
+import { Navbar } from "../Components/Navbar";
+
 import { AnimatePresence } from "framer-motion";
 import { viewsData } from "../Constants/test_data";
 import Views from "../Containers/Views";
@@ -16,6 +18,7 @@ const Home = () => {
   }, [params]);
   return (
     <div>
+      <Navbar />
       <HomeContext.Provider value={{ views }}>
         <Banner />
         <AnimatePresence>
