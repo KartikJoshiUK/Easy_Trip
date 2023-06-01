@@ -64,8 +64,8 @@ const Views = () => {
             </>
           ) : (
             <>
-              <p>See Less</p>
               <BsChevronUp />
+              <p>See Less</p>
             </>
           )}
         </button>

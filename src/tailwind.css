@@ -5,3 +5,8 @@
   font-family: "Hinglish";
   src: url("../src//assets//font/SAMARN__.TTF");
 }
+@layer components {
+  .sidebar-link-before {
+    @apply relative before:absolute before:top-[50%] before:z-50 before:h-3 before:w-3 before:-translate-x-6 before:-translate-y-1/2 before:scale-0 before:rounded-full before:bg-white before:transition-all hover:before:scale-100;
+  }
+}
