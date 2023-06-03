@@ -1,5 +1,5 @@
 import Banner from "../Containers/Banner";
-import { Navbar } from "../Components/Navbar";
+import Navbar from "../Components/Navbar";
 import Footer from "../Containers/Footer";
 import { viewsData } from "../Constants/test_data";
 import Views from "../Containers/Views";

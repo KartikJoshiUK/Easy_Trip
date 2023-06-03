@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Login, Signup, Error404 } from "./Pages";
 import { useState } from "react";
+import Package from "./Pages/Package";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   return (
     <Router>
       <Routes>
@@ -14,6 +15,7 @@ function App() {
         />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/package" element={<Package />} />
         <Route
           exact
           path="*"

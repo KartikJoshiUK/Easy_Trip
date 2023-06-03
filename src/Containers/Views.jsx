@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FadeIn } from "../Constants/framer";
 import Error404 from "../Pages/Error404";
 import { useContext, useEffect, useState } from "react";
+import React from "react";
 import { HomeContext } from "../Pages/Home";
 import { AnimatePresence } from "framer-motion";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
@@ -38,7 +39,7 @@ const Views = () => {
                 return (
                   <ViewCard key={card.name} data={card} delayIndex={index} />
                 );
-              return <></>;
+              return <React.Fragment key={card.name}></React.Fragment>;
             }
             return (
               <ViewCard

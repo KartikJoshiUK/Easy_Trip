@@ -3,7 +3,7 @@ import SideBar from "./SideBar";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 export const NavContext = createContext();
 
-export const Navbar = () => {
+const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   return (
     <nav className="fixed left-0 top-0 z-30 flex h-[50px] w-full items-center justify-between bg-black bg-opacity-20 px-5">
@@ -33,3 +33,4 @@ export const Navbar = () => {
     </nav>
   );
 };
+export default Navbar;
