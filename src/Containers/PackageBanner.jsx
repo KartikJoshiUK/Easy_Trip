@@ -2,27 +2,16 @@ import React, { useState } from "react";
 import Carausel from "../Components/Carausel";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Data = [
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/b/bd/Taj_Mahal%2C_Agra%2C_India_edit3.jpg",
-  },
-  {
-    image:
-      "https://gumlet.assettype.com/dharmadispatch/2019-12/1ac7c55e-6671-4704-9c6b-44b0304ac86c/Taj.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
-  },
-];
-
 const PackageBanner = ({ data }) => {
   const [journeyDetails, setJourneyDetails] = useState({
     group: false,
     people: 2,
   });
   return (
-    <div className="mt-[10vh] flex flex-col p-6 md:flex-row">
+    <div className="flex flex-col p-6 pt-[10vh] md:flex-row">
       {/* CARAUSEL */}
       <div className="h-[50vh] w-full">
-        <Carausel />
+        <Carausel data={data.images} />
       </div>
       {/* DETAILS */}
       <div className="flex w-full flex-col items-center justify-center gap-3 p-3">

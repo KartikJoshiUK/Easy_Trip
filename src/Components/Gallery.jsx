@@ -92,7 +92,7 @@ const Gallery = () => {
         className="absolute bottom-0 left-0 top-0 bg-black bg-opacity-50 p-3 text-white opacity-0 transition-opacity group-hover:opacity-100"
         onClick={() =>
           setIndex((prev) => {
-            if (prev === 0) return data.length - 1;
+            if (prev === 0) return prev;
             return prev - 1;
           })
         }

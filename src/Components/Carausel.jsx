@@ -1,21 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { motion, animate } from "framer-motion";
-const data = [
-  {
-    image:
-      "https://www.aboutcivil.org/sites/default/files/2017-10/structural-details-taj-mahal.JPG",
-  },
-  {
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/b/bd/Taj_Mahal%2C_Agra%2C_India_edit3.jpg",
-  },
-  {
-    image:
-      "https://gumlet.assettype.com/dharmadispatch/2019-12/1ac7c55e-6671-4704-9c6b-44b0304ac86c/Taj.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
-  },
-];
+import { motion } from "framer-motion";
+
 const timeDelta = 3;
-const Carausel = () => {
+const Carausel = ({ data }) => {
   const [index, setIndex] = useState(0);
   useEffect(() => {
     const timer = setTimeout(() => {
