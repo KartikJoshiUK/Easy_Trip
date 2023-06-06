@@ -9,8 +9,40 @@ const data = {
   description:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur alias est eos temporibus non animi distinctio? Excepturi dolorem sunt blanditiis porro adipisci quaerat necessitatibus debitis quae error, eius nemo eveniet!",
   details: {
-    Food: ["Gol Gappe", "Samosa", "Kachodi"],
-    Culture: ["Mughal Monuments", "Historical Vibes", "Etc etc"],
+    food: {
+      title: "Famous Foods",
+      description:
+        "lorem Ipsum is simply dummy text of the printing and typesetting industry",
+      content: [
+        {
+          title: "Samosa",
+          description: "samosa is very delicious and tasty",
+          images: ["#", "#", "#"],
+        },
+        {
+          title: "Pakoda",
+          description: "samosa is very delicious and tasty",
+          images: ["#", "#", "#"],
+        },
+      ],
+    },
+    culture: {
+      title: "Cultural Importance",
+      description:
+        "lorem Ipsum is simply dummy text of the printing and typesetting industry",
+      content: [
+        {
+          title: "Elephant Motif",
+          description: "blah blah blah",
+          images: ["#", "#", "#"],
+        },
+        {
+          title: "Inscription",
+          description: "blah blah blah",
+          images: ["#", "#", "#"],
+        },
+      ],
+    },
   },
   price: 2000,
   rating: 4.5,
@@ -44,14 +76,14 @@ const Package = () => {
       <div className="flex flex-col gap-6 p-6 font-semibold">
         <h2 className="text-5xl">Culture</h2>
         <ul className="ml-6 list-disc font-normal">
-          {data.details.Culture.map((item) => (
-            <li key={item}>{item}</li>
+          {data.details.culture.content.map((item) => (
+            <li key={item}>{item.title}</li>
           ))}
         </ul>
         <h2 className="text-5xl">Food</h2>
         <ul className="ml-6 list-disc font-normal">
-          {data.details.Food.map((item) => (
-            <li key={item}>{item}</li>
+          {data.details.food.content.map((item) => (
+            <li key={item}>{item.title}</li>
           ))}
         </ul>
       </div>
