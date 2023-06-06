@@ -1,6 +1,6 @@
 import Banner from "../Containers/Banner";
 
-import AllSections from "../Containers/AllSections";
+// import AllSections from "../Containers/AllSections";
 import { Navbar } from "../Components/Navbar";
 
 
