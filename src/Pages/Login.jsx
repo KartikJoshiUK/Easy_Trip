@@ -5,7 +5,7 @@ import { Authapi } from "../Authapi/Auth";
 import { toast } from "react-toastify";
 import AuthOptions from "../Components/AuthOptions";
 
-const Login = () => {
+const Login = ({ login }) => {
   const navigate = useNavigate();
   const [credential, setcredential] = useState({
     email: "",
@@ -14,11 +14,13 @@ const Login = () => {
   const credentialcheck = (e) => {
     setcredential({ ...credential, [e.target.name]: e.target.value });
   };
+  console.log(credential);
   const logged = async (e) => {
     e.preventDefault();
     try {
       if (credential.email !== "" && credential.password !== "") {
         const hlo = await Authapi(credential.email, credential.password);
+        login(true);
         toast.success("successfully sign to Easytrip");
         navigate("/");
       }

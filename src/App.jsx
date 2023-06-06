@@ -1,22 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Login, Signup, Error404 } from "./Pages";
 import { useState } from "react";
-import GuideRestration from "./guider/GuideRestration";
-import Dashmain from "./guider/dashboard/dashmain";
-import { Review } from "./guider/compo/review";
-import { Order } from "./guider/compo/order";
-import { Coustmer } from "./guider/compo/coustmer";
-  
-
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={loggedIn ? <Home /> : <Login />} />
-        <Route exact path="/:views" element={<Home />} />
+        <Route
+          exact
+          path="/"
+          element={loggedIn ? <Home /> : <Login login={setLoggedIn} />}
+        />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/package" element={<Package />} />
         <Route
           exact
           path="*"

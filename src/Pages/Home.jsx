@@ -7,23 +7,24 @@ import { Navbar } from "../Components/Navbar";
 import { AnimatePresence } from "framer-motion";
 import { viewsData } from "../Constants/test_data";
 import Views from "../Containers/Views";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { createContext } from "react";
+import Contact from "../Containers/Contact";
+import Services from "../Containers/Services";
+
+export const HomeContext = createContext();
 const Home = () => {
-  const params = useParams();
+  const [views, setViews] = useState(viewsData.states);
   return (
     <div>
       <Navbar />
-            
-      <Banner />
-      <AnimatePresence>
-        <Views
-          data={
-            params.views === undefined
-              ? viewsData.states
-              : viewsData[params.views]
-          }
-        />
-      </AnimatePresence>
+      <HomeContext.Provider value={{ views, setViews }}>
+        <Banner />
+        <Views />
+      </HomeContext.Provider>
+      <Services />
+      <Contact />
+      <Footer />
     </div>
   );
 };

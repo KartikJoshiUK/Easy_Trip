@@ -3,20 +3,20 @@ import bannerBgImage from "..//assets/home-banner-1.jpg";
 import SubNavigationBar from "../Components/SubNavigationBar";
 const BannerCard = ({ title, description }) => {
   return (
-    <div className="banner-card relative flex flex-col gap-2 overflow-hidden px-6 py-1 md:py-6">
+    <div className="group relative flex flex-col gap-2 overflow-hidden px-6 py-1 md:py-6">
       <h2 className="text-2xl font-semibold">{title}</h2>
       <p className="md:text-md text-xs">{description}</p>
       {/* Black Overlay */}
-      <div className="absolute -left-[99%] top-0 h-full w-full bg-white mix-blend-difference transition-[left]"></div>
+      <div className="absolute -left-[99%] top-0 h-full w-full bg-white mix-blend-difference transition-[left] group-hover:left-0"></div>
     </div>
   );
 };
 const Banner = () => {
   return (
-    <section className="relative flex h-[100vh] items-center justify-center p-10 lg:p-52 ">
+    <section className="relative flex min-h-[100vh] items-center justify-center p-10">
       {/* INFORMATION */}
       <div className="mt-[10vh] flex min-h-[50%] flex-col items-center gap-8 p-6 text-white backdrop-blur-sm md:gap-10">
-        <div className="flex flex-col gap-2 z-0">
+        <div className="flex flex-col gap-2">
           <h1 className="text-center font-Hinglish text-5xl font-bold lg:text-7xl">
             Welcome to India
           </h1>
