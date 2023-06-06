@@ -1,17 +1,16 @@
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import {signInWithEmailAndPassword,createUserWithEmailAndPassword} from "firebase/auth"
+import { auth2 } from "../Firebaseconfig";
 
 
-import { auth1 } from "../Firebaseconfig";
+
+
 
 
 
 
 export const Authapi = (email,password) => {
     try{
-       return signInWithEmailAndPassword(auth1,email,password) 
+       return signInWithEmailAndPassword(auth2,email,password) 
     }catch(error) {
         return error;
         // ..
@@ -19,7 +18,7 @@ export const Authapi = (email,password) => {
     }
     export const  Regapi = (email,password) => {
     try{
-      return   createUserWithEmailAndPassword(auth1,email,password)
+      return   createUserWithEmailAndPassword(auth2,email,password)
     }catch(error){
       return error
     }
@@ -27,9 +26,10 @@ export const Authapi = (email,password) => {
      
      
     }
+
     // export const Signout=()=>{
     //   try{
-    //     return  signOut(auth)
+    //     return  signOut(authguide)
     //     }
     //     catch(error){
     //       return error

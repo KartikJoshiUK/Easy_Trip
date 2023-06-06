@@ -1,6 +1,10 @@
 import Banner from "../Containers/Banner";
-import Navbar from "../Components/Navbar";
-import Footer from "../Containers/Footer";
+
+// import AllSections from "../Containers/AllSections";
+import { Navbar } from "../Components/Navbar";
+
+
+import { AnimatePresence } from "framer-motion";
 import { viewsData } from "../Constants/test_data";
 import Views from "../Containers/Views";
 import { useState } from "react";
