@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Order = () => {
-  return (
-    <div>O</div>
-  )
-}
+  return <div>Order</div>;
+};

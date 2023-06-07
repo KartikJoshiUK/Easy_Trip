@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
 
-export const Coustmer = () => {
-  return (
-    <div>Coustmer</div>
-  )
-}
+const Coustmer = () => {
+  return <div>Coustmer</div>;
+};
+export default Coustmer;

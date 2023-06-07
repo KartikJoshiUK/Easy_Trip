@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PackageBanner from "../Containers/PackageBanner";
-import Navbar from "../Components/Navbar";
+import { Navbar } from "../Components/Navbar";
 import Gallery from "../Components/Gallery";
 import { Rate } from "antd";
 

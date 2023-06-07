@@ -1,7 +1,3 @@
-
-
-export const Pagecontent = () => {
-  return (
-    <div>P</div>
-  )
-}
+export const Pagecontent = ({ data }) => {
+  return <div>{data}</div>;
+};
