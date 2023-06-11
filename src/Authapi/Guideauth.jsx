@@ -19,6 +19,7 @@ export const Authapi = (email,password) => {
     export const  Regapi = (email,password) => {
     try{
       return   createUserWithEmailAndPassword(auth2,email,password)
+      
     }catch(error){
       return error
     }

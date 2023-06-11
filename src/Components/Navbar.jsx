@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import "../cssfiles/nav.css"
+import "../cssfiles/nav.css";
+import ContactForm from "./Contactus";
+
 export const Navbar = () => {
   return (
     <nav className="nav flex
@@ -15,8 +17,8 @@ export const Navbar = () => {
   <ul className="hidden md:flex ">
     <li className="ml-1">Explore</li>
     <li className="ml-1">WhatWeProvide</li>
- 
-    <li className="ml-1">ContactUs</li>
+ <ContactForm />
+    {/* <li className="ml-1">ContactUs</li> */}
   </ul>
   <div className="flex w-[300px] p-2">
   <button className="glass  ">Login</button>

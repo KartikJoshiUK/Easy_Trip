@@ -1,6 +1,8 @@
-import { Typography,Space,Badge } from "antd"
+import { Typography,Space,Badge} from "antd"
 import { motion } from "framer-motion"
-import {BellFilled, MailOutlined} from "@ant-design/icons"
+import {MailOutlined} from "@ant-design/icons";
+import Menupro from "../compo/Menu";
+
 export const Header = () => {
   return (
     <div className="h-[50px] flex box-border border-b-[1px] justify-between items-center pl-[10px] pt-[20px] pr-[20px] pb-[20px] 
@@ -17,11 +19,9 @@ export const Header = () => {
             <Typography.Title className="mt-[10px]">Jatin Dashboard</Typography.Title>
             <Space>
                 <Badge dot>
-            <MailOutlined  className="text-[20px]"/>
+            <MailOutlined  className="text-[25px]"/>
             </Badge>
-            <Badge count={20}>
-            < BellFilled className="text-[20px]"/>
-            </Badge>
+          <Menupro/>
                 </Space>
 
     </div>

@@ -11,6 +11,7 @@ import { createContext } from "react";
 import Contact from "../Containers/Contact";
 import Footer from "../Containers/Footer";
 import Services from "../Containers/Services";
+import Chat from "../Components/chat";
 
 export const HomeContext = createContext();
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
         <Views />
       </HomeContext.Provider>
       <Services />
+      <Chat/>
       <Contact />
       <Footer />
     </div>
