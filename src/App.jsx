@@ -3,9 +3,7 @@ import { Home, Login, Signup, Error404 } from "./Pages";
 import { createContext, useState } from "react";
 import GuideRestration from "./guider/GuideRestration";
 import Dashmain from "./guider/dashboard/dashmain";
-import { Review } from "./guider/compo/review";
-import { Order } from "./guider/compo/order";
-import Coustmer from "./guider/compo/coustmer";
+
 import Package from "./Pages/Package";
 import Information from "./Pages/Information";
 export const GlobalContext = createContext();

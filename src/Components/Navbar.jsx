@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import "../cssfiles/nav.css";
 import { useNavigate } from "react-router-dom";
+import ContactForm from "./Contactus";
+
 export const Navbar = () => {
   const navigate = useNavigate();
   return (
@@ -17,7 +19,7 @@ export const Navbar = () => {
       <ul className="hidden md:flex ">
         <li className="ml-1">Explore</li>
         <li className="ml-1">WhatWeProvide</li>
-
+        <ContactForm />
         <li className="ml-1">ContactUs</li>
       </ul>
       <div className="flex w-[300px] p-2">

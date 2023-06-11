@@ -1,28 +1,29 @@
 import { useFormik } from "formik"
-
+import * as Yup from "yup"
 
 export const SignupGuide = () => {
    const formik= useFormik({
     initialValues:{
-        name:"",
+        email:"",
         password:"",
         confirmpassword:""
     },
     onSubmit:values=>{
         console.log(values)
     },
-    validate:values=>{
-        let errors={}
-        if(!values.name){
-            errors.name="Required"
-        }
-        if(!values.password){
-            errors.password="Required"
-        }
-        if(!values.confirmpassword){
-            errors.confirmpasswor="Required"
-        }
-    }
+   validationSchema:Yup.object({
+    email:Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters long')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+      'Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character'
+    ),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('Confirm Password is required'),
+   })
    })
   console.log(formik.values)
   return (<>
@@ -32,11 +33,15 @@ export const SignupGuide = () => {
           <label htmlFor="email" className="block text-gray-700 font-bold mb-1">Email</label>
           <input 
           type="email" 
-          id="name" 
-          name="name"
+          id="email" 
+          name="email"
            className="w-[400px] border border-gray-300 rounded px-3 py-2" 
           onChange={formik.handleChange} 
-          value={formik.values.name} />
+          onBlur={formik.handleBlur}
+          value={formik.values.email} />
+            {
+               formik.touched.email && formik.errors.email?<div className="text-red-500">{formik.errors.email}</div>:null
+              }
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block text-gray-700 font-bold mb-1">Password</label>
@@ -44,16 +49,24 @@ export const SignupGuide = () => {
           type="password" 
           id="password" 
           name="password" 
+          onBlur={formik.handleBlur}
           className="w-[400px] border border-gray-300 rounded px-3 py-2"
            onChange={formik.handleChange} value={formik.values.password}  />
+             {
+               formik.touched.password && formik.errors.password?<div className="text-red-500">{formik.errors.password}</div>:null
+              }
         </div>
         <div className="mb-4">
           <label htmlFor="confirmpassword" className="block text-gray-700 font-bold mb-1">ConfirmPassword</label>
           <input type="password" id="password"
            name="confirmpassword" 
           className="w-[400px] border border-gray-300 rounded px-3 py-2"  
+          onBlur={formik.handleBlur}
           onChange={formik.handleChange} value={formik.values.confirmpassword}
           />
+            {
+               formik.touched.confirmpassword && formik.errors.confirmpassword?<div className="text-red-500">{formik.errors.confirmPassword}</div>:null
+              }
         </div>
         <div>
           <button type="submit" className="bg-blue-500 w-[400px] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

@@ -1,7 +1,7 @@
+import { Button } from 'antd';
 import {  useFormik } from 'formik';
 import {useState} from 'react';
 import Webcam from 'react-webcam';
-import detailfirestore from '../guidefirestore/detailfirestore';
 
 const initialValues={
   pancard:"",
@@ -9,7 +9,6 @@ const initialValues={
 }
 
 export default function VerificationForm(){
-detailfirestore();
   const formik=useFormik({
     initialValues
   })
@@ -79,19 +78,23 @@ detailfirestore();
     )}
  </Webcam>
  <div>
-  <div className='relative left-[300px] bottom-[260px] '>
+        <div className='relative left-[300px] bottom-[260px] '>
         {
           Image && <img src={Image} alt="Capture Image"/>
         }
-    </div>  
+       </div>  
    
-          </div>  
+        </div>  
 
         </div>
      
     </div>
+   
+
     </div>
-    
+    <div className="butto">
+      <Button default="primary" >Submit</Button>
+    </div>
     </div>
     
   );
