@@ -7,6 +7,7 @@ import React from "react";
 import { HomeContext } from "../Pages/Home";
 import { AnimatePresence } from "framer-motion";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { view_to_route } from "../Constants/utility";
 const visibleViews = 3;
 const Views = () => {
   const { views } = useContext(HomeContext);
@@ -17,8 +18,19 @@ const Views = () => {
       </section>
     );
   const [viewsLimit, setViewsLimit] = useState(true);
+  const [viewsCards, setViewsCards] = useState([]);
+  const fetchViewCards = async (param) => {
+    console.log(`http://localhost:3000/${view_to_route[param]}/meta`);
+    const data = await fetch(
+      `http://localhost:3000/${view_to_route[param]}/meta`
+    );
+    const response = await data.json();
+    setViewsCards(response);
+    console.log("fetched Meta states", response);
+  };
   useEffect(() => {
     setViewsLimit(true);
+    fetchViewCards(views.key);
   }, [views]);
   return (
     <AnimatePresence>
@@ -33,17 +45,23 @@ const Views = () => {
           exit="hide"
           className="flex flex-wrap items-start justify-center gap-4 md:gap-10"
         >
-          {views.cards.map((card, index) => {
+          {viewsCards.map((card, index) => {
             if (viewsLimit) {
               if (index < visibleViews)
                 return (
-                  <ViewCard key={card.name} data={card} delayIndex={index} />
+                  <ViewCard
+                    key={card.name || card.title}
+                    data={card}
+                    delayIndex={index}
+                  />
                 );
-              return <React.Fragment key={card.name}></React.Fragment>;
+              return (
+                <React.Fragment key={card.name || card.title}></React.Fragment>
+              );
             }
             return (
               <ViewCard
-                key={card.name}
+                key={card.name || card.title}
                 data={card}
                 delayIndex={index - visibleViews}
               />
