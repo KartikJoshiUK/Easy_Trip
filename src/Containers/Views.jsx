@@ -20,10 +20,11 @@ const Views = () => {
   const [viewsLimit, setViewsLimit] = useState(true);
   const [viewsCards, setViewsCards] = useState([]);
   const fetchViewCards = async (param) => {
-    console.log(`http://localhost:3000/${view_to_route[param]}/meta`);
-    const data = await fetch(
-      `http://localhost:3000/${view_to_route[param]}/meta`
-    );
+    const url = `http://localhost:3000/${
+      view_to_route[param] === "city" ? "package" : view_to_route[param]
+    }/meta${param === "cities" ? "?type=city" : ""}`;
+    console.log(url);
+    const data = await fetch(url);
     const response = await data.json();
     setViewsCards(response);
     console.log("fetched Meta states", response);

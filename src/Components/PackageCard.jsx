@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const PackageCard = ({ data, width, gap, link }) => {
   return (
     <Link
-      to={`/${link}/${data?.id}`}
+      to={`/${link === "cities" ? "city" : link}/${data?.id}`}
       onClick={() => window.scrollTo(0, 0)}
       style={{
         width: width + "px",

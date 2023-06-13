@@ -96,6 +96,7 @@ const getPackages = async (req, res) => {
 const getMetaPackages = async (req, res) => {
   try {
     const type = req.query.type || "package";
+    console.log(req.originalUrl);
     const data = await fetchPackages(type, true);
     res.json(data);
   } catch (error) {

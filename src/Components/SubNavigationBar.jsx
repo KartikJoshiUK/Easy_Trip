@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { viewsData } from "../Constants/test_data";
 import { HomeContext } from "../Pages/Home";
-const buttons = [
-  { title: "States", state: "states" },
-  { title: "Attractions", state: "attractions" },
-  { title: "Culture", state: "culture" },
-  { title: "Food", state: "food" },
-  { title: "Adventure", state: "adventure" },
-];
+const buttons = Object.keys(viewsData).map((keyName) => {
+  return {
+    title: viewsData[keyName].buttonText,
+    state: viewsData[keyName].key,
+  };
+});
 const SubNavigationBar = () => {
   const { views, setViews } = useContext(HomeContext);
   return (

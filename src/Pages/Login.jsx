@@ -9,6 +9,7 @@ import { GlobalContext } from "../App";
 const Login = () => {
   const { setUser, setLoggedIn } = useContext(GlobalContext);
   const navigate = useNavigate();
+
   const [credential, setcredential] = useState({
     email: "",
     password: "",
@@ -78,6 +79,15 @@ const Login = () => {
           <Link className="text-blue-600" to={"/signup"}>
             Create One
           </Link>
+        </p>
+        <p className="text-sm">
+          You are a guide?{" "}
+          <span
+            className="cursor-pointer text-blue-600"
+            onClick={() => setUser({})}
+          >
+            Guide Login
+          </span>
         </p>
         <button
           type="submit"

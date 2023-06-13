@@ -1,6 +1,6 @@
 export const view_to_route = {
   states: "package",
-  attractions: "activities",
+  cities: "city",
   food: "food",
   culture: "cultural",
   adventure: "activities",

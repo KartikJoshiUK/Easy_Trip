@@ -1,0 +1,43 @@
+import React from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { Error404 } from "./Pages";
+import { GlobalContext } from "./App";
+import GuideRestration from "./guider/GuideRestration";
+import Dashmain from "./guider/dashboard/dashmain";
+import { Review } from "./guider/compo/review";
+import { Order } from "./guider/compo/order";
+import Coustmer from "./guider/compo/coustmer";
+const RouterGuide = () => {
+  const navigate = useNavigate();
+  const { loggedIn } = useContext(GlobalContext);
+  useEffect(() => {
+    if (!loggedIn) navigate("/login");
+  }, []);
+  if (!loggedIn) {
+    return <p>Pedirecting to login page</p>;
+  }
+  return (
+    <Routes>
+      <Route exact path="/" element={<GuideRestration />} />
+      <Route exact path="/guidedashboard/review" element={<Review />} />
+      <Route exact path="/guidedashboard/order" element={<Order />} />
+      <Route exact path="/guidedashboard/customer" element={<Coustmer />} />
+      <Route exact path="/guidedashboard/*" element={<Dashmain />} />
+      <Route
+        exact
+        path="*"
+        element={
+          <Error404
+            message="Looks like you lost your way"
+            link="/"
+            linkText="Go to home"
+          />
+        }
+      />
+    </Routes>
+  );
+};
+
+export default RouterGuide;

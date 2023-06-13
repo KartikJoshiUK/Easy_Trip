@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import signupImage from "../assets/signup.jpg";
 import { Regapi } from "../Authapi/Auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthOptions from "../Components/AuthOptions";
+import { GlobalContext } from "../App";
 
 const Signup = () => {
+  const { setUser } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [credential, setCredential] = useState({
     password: "",
@@ -108,6 +110,15 @@ const Signup = () => {
           <Link className="text-blue-600" to={"/login"}>
             Login
           </Link>
+        </p>
+        <p className="text-sm">
+          You are a guide?{" "}
+          <span
+            className="cursor-pointer text-blue-600"
+            onClick={() => setUser({})}
+          >
+            Guide Login
+          </span>
         </p>
         <button
           type="submit"
