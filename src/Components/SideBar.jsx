@@ -37,12 +37,18 @@ const SideBar = () => {
         </li>
       </ul>
       <div className="flex w-full justify-center gap-2 p-2">
-        <button className="w-[40%] rounded-lg bg-gray-800  bg-opacity-80 px-2 py-1 text-white backdrop-blur-sm hover:bg-gray-600">
+        <Link
+          to={"/login"}
+          className="w-[40%] rounded-lg bg-gray-800  bg-opacity-80 px-2 py-1 text-white backdrop-blur-sm hover:bg-gray-600"
+        >
           Login
-        </button>
-        <button className="w-[40%]  rounded-lg bg-red-600 bg-opacity-80 px-2 py-1 text-white backdrop-blur-sm hover:bg-red-500">
+        </Link>
+        <Link
+          to={"/signup"}
+          className="w-[40%]  rounded-lg bg-red-600 bg-opacity-80 px-2 py-1 text-white backdrop-blur-sm hover:bg-red-500"
+        >
           Sign up
-        </button>
+        </Link>
       </div>
     </motion.div>
   );

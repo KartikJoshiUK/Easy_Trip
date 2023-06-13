@@ -35,7 +35,7 @@ const countries = [
   "Others",
 ];
 const BookPackage = () => {
-  const { setShowBookingModal } = useContext(PackageContext);
+  const { setShowBookingModal, journeyDetails } = useContext(PackageContext);
   const params = useParams();
   const location = useLocation();
   const { user } = useContext(GlobalContext);
@@ -73,6 +73,7 @@ const BookPackage = () => {
         isCity: location.pathname.split("/").includes("cities") ? true : false,
         package: params.packageId,
         date: data?.date,
+        people: journeyDetails.people,
       }),
     });
   };

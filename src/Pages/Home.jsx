@@ -1,9 +1,5 @@
 import Banner from "../Containers/Banner";
-
-// import AllSections from "../Containers/AllSections";
-import { Navbar } from "../Components/Navbar";
-
-import { AnimatePresence } from "framer-motion";
+import Navbar from "../Components/Navbar";
 import { viewsData } from "../Constants/test_data";
 import Views from "../Containers/Views";
 import { useState } from "react";
@@ -18,13 +14,12 @@ const Home = () => {
   const [views, setViews] = useState(viewsData.states);
   return (
     <div>
-      <Navbar />
       <HomeContext.Provider value={{ views, setViews }}>
         <Banner />
         <Views />
       </HomeContext.Provider>
       <Services />
-      <Chat/>
+      <Chat />
       <Contact />
       <Footer />
     </div>

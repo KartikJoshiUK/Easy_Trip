@@ -8,7 +8,7 @@ import RouterGuide from "./RouterGuide";
 export const GlobalContext = createContext();
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [user, setUser] = useState({ type: "guide" });
+  const [user, setUser] = useState({ type: "tourist" });
   return (
     <GlobalContext.Provider value={{ loggedIn, setLoggedIn, user, setUser }}>
       <BrowserRouter>

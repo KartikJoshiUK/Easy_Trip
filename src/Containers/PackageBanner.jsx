@@ -5,16 +5,13 @@ import BookPackage from "../Components/BookPackage";
 import { PackageContext } from "../Pages/Package";
 
 const PackageBanner = ({ data }) => {
-  const { setShowBookingModal } = useContext(PackageContext);
-  const [journeyDetails, setJourneyDetails] = useState({
-    group: false,
-    people: 2,
-  });
+  const { setShowBookingModal, journeyDetails, setJourneyDetails } =
+    useContext(PackageContext);
   return (
     <div className="relative flex flex-col p-6 pt-[10vh] md:flex-row">
       {/* CARAUSEL */}
       <div className="h-[50vh] w-full">
-        <Carausel data={data?.images} />
+        {data?.images !== undefined && <Carausel data={data?.images} />}
       </div>
       {/* DETAILS */}
       <div className="flex w-full flex-col items-center justify-center gap-3 p-3">

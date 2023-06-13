@@ -4,10 +4,14 @@ const PackageCard = ({ data, width, gap, link }) => {
     <Link
       to={`/${link === "cities" ? "city" : link}/${data?.id}`}
       onClick={() => window.scrollTo(0, 0)}
-      style={{
-        width: width + "px",
-        marginRight: gap + "px",
-      }}
+      style={
+        width !== undefined && gap !== undefined
+          ? {
+              width: width + "px",
+              marginRight: gap + "px",
+            }
+          : {}
+      }
       className={`h-full shrink-0 cursor-pointer overflow-hidden rounded-md`}
     >
       <div className="aspect-square overflow-hidden rounded-t-md">

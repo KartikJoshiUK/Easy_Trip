@@ -13,6 +13,7 @@ const setOrder = async (req, res) => {
     user: userRef,
     package: packageRef,
     date: body.date,
+    people: body.people,
   };
   const orderRef = db.collection("orders").doc(orderId);
   orderRef
