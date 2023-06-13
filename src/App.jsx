@@ -5,6 +5,7 @@ import GuideRestration from "./guider/GuideRestration";
 import Dashmain from "./guider/dashboard/dashmain";
 
 import Package from "./Pages/Package";
+import Lens from "./Components/Lens";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/package" element={<Package />} />
+        <Route exact path="/Lens" element={<Lens />} />
         <Route
           exact
           path="*"

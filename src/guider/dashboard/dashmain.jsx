@@ -11,7 +11,7 @@ const Dashmain = () => {
 
       <div className="flex flex-1">
         <Sidebar></Sidebar>
-       <Pagecontent  />
+       <Pagecontent   />
       </div>
 
       <Footer />

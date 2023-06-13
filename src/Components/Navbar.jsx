@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import "../cssfiles/nav.css";
 import ContactForm from "./Contactus";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
@@ -21,8 +22,9 @@ export const Navbar = () => {
     {/* <li className="ml-1">ContactUs</li> */}
   </ul>
   <div className="flex w-[300px] p-2">
+  <Link to="/lens"><button className="glass  w-[140px]" style={{ backgroundColor: '#096dd9' }}>Ai-Lens</button></Link>
   <button className="glass  ">Login</button>
-  <button className="glass bg-red-600 w-[100px]  ">Sign up</button>
+  <button className="glass bg-red-600 w-full  ">Sign up</button>
   </div>
   
   </nav>

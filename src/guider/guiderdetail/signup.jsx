@@ -1,31 +1,9 @@
-import { useFormik } from "formik"
-import * as Yup from "yup"
 
+
+import { useContext } from "react";
+import { ThemeContext } from "../GuideRestration";
 export const SignupGuide = () => {
-   const formik= useFormik({
-    initialValues:{
-        email:"",
-        password:"",
-        confirmpassword:""
-    },
-    onSubmit:values=>{
-        console.log(values)
-    },
-   validationSchema:Yup.object({
-    email:Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string()
-    .required('Password is required')
-    .min(8, 'Password must be at least 8 characters long')
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-      'Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character'
-    ),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm Password is required'),
-   })
-   })
-  console.log(formik.values)
+ const {formik}=useContext(ThemeContext)
   return (<>
     <h2 className="text-2xl font-bold mb-4 ml-[120px]">Sign Up</h2>
       <form className='ml-[120px]' onSubmit={formik.handleSubmit}>
@@ -65,7 +43,7 @@ export const SignupGuide = () => {
           onChange={formik.handleChange} value={formik.values.confirmpassword}
           />
             {
-               formik.touched.confirmpassword && formik.errors.confirmpassword?<div className="text-red-500">{formik.errors.confirmPassword}</div>:null
+               formik.touched.confirmpassword && formik.errors.confirmpassword?<div className="text-red-500">{formik.errors.confirmpassword}</div>:null
               }
         </div>
         <div>
@@ -73,6 +51,7 @@ export const SignupGuide = () => {
             Sign Up
           </button>
         </div>
+       
       </form>
       </>
   )

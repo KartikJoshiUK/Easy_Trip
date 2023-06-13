@@ -1,6 +1,7 @@
 import { UserOutlined,LogoutOutlined } from '@ant-design/icons';
 import { Menu} from '@mantine/core';
 import Avatar from 'antd/es/avatar/avatar';
+import { Link } from 'react-router-dom';
 
 export default function Menupro() {
   return (
@@ -12,14 +13,14 @@ export default function Menupro() {
       </Menu.Target>
 
       <Menu.Dropdown>
-        <Menu.Item
+       <Link to="/guidedashboard/profile"><Menu.Item
         icon= <UserOutlined /> >
         GuiderProfile
         </Menu.Item>
-
+      </Link>
         <Menu.Item
         icon= <LogoutOutlined />>
-       Sign-out
+         Sign-out
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

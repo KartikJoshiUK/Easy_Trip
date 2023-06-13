@@ -38,21 +38,29 @@ export const Dash = () => {
     <Space direction='horizontal'>
     <Card>
     <Space direction='horizontal'>
+  
+    <div className="bg-gradient-to-r from-lime-400 to-green-400 rounded-full p-2">
     <ShoppingCartOutlined className="text-[30px]"/>
+    </div>
     <Statistic title="Orders"  value={123}/>
     </Space>
     {/* <Button onClick={()=>sethlo(prev=>prev+1)}>click</Button> */}
 </Card>
 <Card>
     <Space direction='horizontal'>
+    <div className="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full p-2">
     <DollarOutlined  className="text-[30px]"/>
+    </div>
     <Statistic title="Revenue"  value={123}/>
     </Space>
     {/* <Button onClick={()=>sethlo(prev=>prev+1)}>click</Button> */}
 </Card>
        <Card>
         <Space>
+      
+        <div className="bg-gradient-to-r from-lime-400 to-green-400 rounded-full p-2">
             <LikeOutlined className="text-[30px]"/>
+            </div>
        <Statistic title="Feedback" value="1223" />
        </Space>
        </Card>

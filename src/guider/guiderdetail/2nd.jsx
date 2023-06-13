@@ -1,39 +1,15 @@
-import { useFormik } from "formik";
+// import { useformik2 } from "formik2";
 import { ThemeContext } from "../GuideRestration";
 import { useContext } from "react";
-import * as Yup from "yup"
+// import * as Yup from "yup"
 
 
 
 const RegistrationForm = () => {
-const initialValues=useContext(ThemeContext);
-  const formik=useFormik({
-    initialValues,
-    validationSchema:Yup.object({
-      name:Yup.string().required("Required!"),
-     
-           phone:Yup.string()
-           .min(10, 'Too Short!').max(10)
-           .required('Required'),
-           dob:Yup.string().required("Required!"),
-           gender:Yup.string().required("Required!"),
-          qualification:Yup.string().required("Required!"),
-         address:Yup.string().required("Required!"),
-        experience:Yup.string().required("Required!"),
-        portfolio:Yup.string().required("Link Required!"),
-        language:Yup.string().required("Required!"),
-        accountno:Yup.string()
-        .min(11, 'Too Short!').max(11)
-        .required('Required'),
-        ifsccode:Yup.string()
-        .min(11, 'Too Short!').max(11)
-        .required('Required!'),
-        state:Yup.string().required("Required!"),
-        city:Yup.string().required("Required!")
-    })
-    
-  })
-  console.log(formik.errors)
+const {formik2,initialvalue} =useContext(ThemeContext);
+console.log(initialvalue,formik2.values)
+  
+  console.log(formik2.errors)
 
   return (
     <div className="flex items-center justify-center   h-full mb-[90px]">
@@ -54,13 +30,13 @@ const initialValues=useContext(ThemeContext);
                 id="name"
                 name="name"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange} 
-                value={formik.values.name}
+                onBlur={formik2.handleBlur}
+                onChange={formik2.handleChange} 
+                value={formik2.values.name}
                 required
               />
               {
-               formik.touched.name && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.name && formik2  .errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             </div>
           </div>
@@ -74,13 +50,13 @@ const initialValues=useContext(ThemeContext);
                 name="phone"
                 className="border-gray-400 border-solid
                  border py-2 px-3 w-full rounded text-sm"
-                  onChange={formik.handleChange} 
-                  onBlur={formik.handleBlur}
-                 value={formik.values.phone}
+                  onChange={formik2.handleChange} 
+                  onBlur={formik2.handleBlur}
+                 value={formik2.values.phone}
                 required
               />
                 {
-               formik.touched.phone && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.phone && formik2.errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             </div>
           </div>
@@ -98,13 +74,13 @@ const initialValues=useContext(ThemeContext);
                 id="qualification"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
                 name="state"
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                value={formik.values.state}
+                onChange={formik2.handleChange} 
+                onBlur={formik2.handleBlur}
+                value={formik2.values.state}
                 required
               />
                 {
-               formik.touched.state && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.state && formik2.errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             </div>
           <div className="mb-4">
@@ -116,13 +92,13 @@ const initialValues=useContext(ThemeContext);
                 id="qualification"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
                 name="city"
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                value={formik.values.City}
+                onChange={formik2.handleChange} 
+                onBlur={formik2.handleBlur}
+                value={formik2.values.City}
                 required
               />
                 {
-               formik.touched.city && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.city && formik2.errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             </div>
             <div className="mb-4">
@@ -134,13 +110,13 @@ const initialValues=useContext(ThemeContext);
                 id="dob"
                 name="dob"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
-                 onChange={formik.handleChange} 
-                 onBlur={formik.handleBlur}
-          value={formik.values.dob}
+                 onChange={formik2.handleChange} 
+                 onBlur={formik2.handleBlur}
+          value={formik2.values.dob}
                 required
               />
                 {
-               formik.touched.dob && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.dob && formik2.errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             </div>
             <div className="mb-4">
@@ -152,13 +128,13 @@ const initialValues=useContext(ThemeContext);
                 id="language"
                 name="language"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
-                 onChange={formik.handleChange} 
-                 onBlur={formik.handleBlur}
-          value={formik.values.language}
+                 onChange={formik2.handleChange} 
+                 onBlur={formik2.handleBlur}
+          value={formik2.values.language}
                 required
               />
                 {
-               formik.touched.language && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.language && formik2.errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             </div>
             <div className="mb-4">
@@ -169,9 +145,9 @@ const initialValues=useContext(ThemeContext);
                 id="gender"
                 name="gender"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                value={formik.values.gender}
+                onChange={formik2.handleChange} 
+                onBlur={formik2.handleBlur}
+                value={formik2.values.gender}
                 required
               >
                 <option value="">Select Gender</option>
@@ -181,7 +157,7 @@ const initialValues=useContext(ThemeContext);
               </select>
             </div>
             {
-               formik.touched.gender && formik.errors.name?<div className="text-red-500">{formik.errors.name}</div>:null
+               formik2.touched.gender && formik2.errors.name?<div className="text-red-500">{formik2.errors.name}</div>:null
               }
             <div className="mb-4">
               <label htmlFor="qualification" className="block font-bold mb-1">
@@ -192,13 +168,13 @@ const initialValues=useContext(ThemeContext);
                 id="qualification"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
                 name="qualification"
-                onChange={formik.handleChange} 
-                value={formik.values.qualification}
-                onBlur={formik.handleBlur}
+                onChange={formik2.handleChange} 
+                value={formik2.values.qualification}
+                onBlur={formik2.handleBlur}
                 required
               />
                 {
-               formik.touched.gender && formik.errors.gender?<div className="text-red-500">{formik.errors.gender}</div>:null
+               formik2.touched.gender && formik2.errors.gender?<div className="text-red-500">{formik2.errors.gender}</div>:null
               }
             </div>
           </div>
@@ -211,13 +187,13 @@ const initialValues=useContext(ThemeContext);
                 id="address"
                 name="address"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
-                onChange={formik.handleChange} 
-                value={formik.values.address}
-                onBlur={formik.handleBlur}
+                onChange={formik2.handleChange} 
+                value={formik2.values.address}
+                onBlur={formik2.handleBlur}
                 required
               ></textarea>
                 {
-               formik.touched.address && formik.errors.address?<div className="text-red-500">{formik.errors.address}</div>:null
+               formik2.touched.address && formik2.errors.address?<div className="text-red-500">{formik2.errors.address}</div>:null
               }
             </div>
             <div className="mb-4">
@@ -229,13 +205,13 @@ const initialValues=useContext(ThemeContext);
                 id="portfolio"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
                 name="portfolio"
-                onChange={formik.handleChange} 
-                value={formik.values.portfolio}
-                onBlur={formik.handleBlur}
+                onChange={formik2.handleChange} 
+                value={formik2.values.portfolio}
+                onBlur={formik2.handleBlur}
                 required
               />
                 {
-               formik.touched.portfolio && formik.errors.portfolio?<div className="text-red-500">{formik.errors.portfolio}</div>:null
+               formik2.touched.portfolio && formik2.errors.portfolio?<div className="text-red-500">{formik2.errors.portfolio}</div>:null
               }
             </div>
          
@@ -246,13 +222,13 @@ const initialValues=useContext(ThemeContext);
               <textarea
                 id="experience"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                value={formik.values.experience}
+                onChange={formik2.handleChange} 
+                onBlur={formik2.handleBlur}
+                value={formik2.values.experience}
                 name="experience" 
               />
                 {
-               formik.touched.experience && formik.errors.experience?<div className="text-red-500">{formik.errors.experience}</div>:null
+               formik2.touched.experience && formik2.errors.experience?<div className="text-red-500">{formik2.errors.experience}</div>:null
               }
             </div>
           
@@ -265,13 +241,13 @@ const initialValues=useContext(ThemeContext);
                 id="qualification"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
                 name="accountno"
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                value={formik.values.accountno}
+                onChange={formik2.handleChange} 
+                onBlur={formik2.handleBlur}
+                value={formik2.values.accountno}
                 required
               />
                 {
-               formik.touched.qualification && formik.errors.qualification?<div className="text-red-500">{formik.errors.qualification}</div>:null
+               formik2.touched.qualification && formik2.errors.qualification?<div className="text-red-500">{formik2.errors.qualification}</div>:null
               }
             </div>
              <div className="mb-4">
@@ -283,14 +259,14 @@ const initialValues=useContext(ThemeContext);
                 id="qualification"
                 className="border-gray-400 border-solid border py-2 px-3 w-full rounded text-sm"
                 name="ifsccode"
-                onChange={formik.handleChange} 
-                onBlur={formik.handleBlur}
-                value={formik.values.ifsccode}
+                onChange={formik2.handleChange} 
+                onBlur={formik2.handleBlur}
+                value={formik2.values.ifsccode}
                 
                 required
               />
                 {
-               formik.touched.ifsccode && formik.errors.ifsccode?<div className="text-red-500">{formik.errors.ifsccode}</div>:null
+               formik2.touched.ifsccode && formik2.errors.ifsccode?<div className="text-red-500">{formik2.errors.ifsccode}</div>:null
               }
             </div>
            
