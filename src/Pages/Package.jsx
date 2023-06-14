@@ -1,108 +1,132 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PackageBanner from "../Containers/PackageBanner";
-import { Navbar } from "../Components/Navbar";
 import Gallery from "../Components/Gallery";
 import { Rate } from "antd";
-
-const data = {
-  title: "Taj Mahal",
-  description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur alias est eos temporibus non animi distinctio? Excepturi dolorem sunt blanditiis porro adipisci quaerat necessitatibus debitis quae error, eius nemo eveniet!",
-  details: {
-    food: {
-      title: "Famous Foods",
-      description:
-        "lorem Ipsum is simply dummy text of the printing and typesetting industry",
-      content: [
-        {
-          title: "Samosa",
-          description: "samosa is very delicious and tasty",
-          images: ["#", "#", "#"],
-        },
-        {
-          title: "Pakoda",
-          description: "samosa is very delicious and tasty",
-          images: ["#", "#", "#"],
-        },
-      ],
-    },
-    culture: {
-      title: "Cultural Importance",
-      description:
-        "lorem Ipsum is simply dummy text of the printing and typesetting industry",
-      content: [
-        {
-          title: "Elephant Motif",
-          description: "blah blah blah",
-          images: ["#", "#", "#"],
-        },
-        {
-          title: "Inscription",
-          description: "blah blah blah",
-          images: ["#", "#", "#"],
-        },
-      ],
-    },
-  },
-  price: 2000,
-  rating: 4.5,
-  images: [
-    {
-      image:
-        "https://www.aboutcivil.org/sites/default/files/2017-10/structural-details-taj-mahal.JPG",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/b/bd/Taj_Mahal%2C_Agra%2C_India_edit3.jpg",
-    },
-    {
-      image:
-        "https://gumlet.assettype.com/dharmadispatch/2019-12/1ac7c55e-6671-4704-9c6b-44b0304ac86c/Taj.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
-    },
-  ],
-};
-
-const Package = () => {
-  const [rating, setRating] = useState(data.rating);
+import { createContext } from "react";
+import { useParams } from "react-router-dom";
+import BookPackage from "../Components/BookPackage";
+import PackageMainBanner from "../Components/PackageMainBanner";
+import ShowCase from "../Containers/ShowCase";
+export const PackageContext = createContext();
+const Package = ({ packageType }) => {
+  const [packageData, setPackageData] = useState(null);
+  const [showBookingModal, setShowBookingModal] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [journeyDetails, setJourneyDetails] = useState({
+    group: false,
+    people: 2,
+  });
+  const params = useParams();
+  const fetchStates = async () => {
+    console.log("Fething States START");
+    if (params.packageId) {
+      console.log(
+        "FETCHING at ",
+        `http://localhost:3000/package/${params.packageId}?type=${packageType}`
+      );
+      const data = await fetch(
+        `http://localhost:3000/package/${params.packageId}?type=${packageType}`
+      );
+      const response = await data.json();
+      console.log("Fething States FINISHED", response);
+      setPackageData(response);
+      setRating(response.rating);
+    }
+  };
+  useEffect(() => {
+    fetchStates();
+  }, []);
   return (
-    <div className="relative p-6 pt-0 ">
-      <Navbar />
-      <PackageBanner data={data} />
-      <div className="flex flex-col gap-4 p-6 md:mx-[15%]">
-        <h1 className="text-6xl font-bold">{data.title}</h1>
-        <h3 className="text-3xl text-gray-900">Overview</h3>
-        <p className="text-slate-900">{data.description}</p>
-      </div>
-      <div className="flex flex-col gap-6 p-6 font-semibold">
-        <h2 className="text-5xl">Culture</h2>
-        <ul className="ml-6 list-disc font-normal">
-          {data.details.culture.content.map((item) => (
-            <li key={item}>{item.title}</li>
-          ))}
-        </ul>
-        <h2 className="text-5xl">Food</h2>
-        <ul className="ml-6 list-disc font-normal">
-          {data.details.food.content.map((item) => (
-            <li key={item}>{item.title}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <Gallery />
-      </div>
-      <div className="flex flex-col gap-3 bg-gray-100 p-6">
-        <h6 className="text-xl font-semibold">Ratings</h6>
-        <div className="flex items-center gap-5">
-          <Rate
-            allowHalf
-            defaultValue={rating}
-            value={rating}
-            onChange={(value) => setRating(value)}
-          />
-          <p className="font-semibold">{rating}</p>
+    <PackageContext.Provider
+      value={{
+        packageData,
+        setPackageData,
+        setShowBookingModal,
+        showBookingModal,
+        journeyDetails,
+        setJourneyDetails,
+      }}
+    >
+      <div className="relative">
+        <PackageMainBanner
+          image={packageData?.images[0]}
+          title={packageData?.title}
+        />
+        <PackageBanner data={packageData} />
+        <div className="mx-[5%] mt-[10vh] flex flex-col items-center gap-4  text-center">
+          <h1 className="text-6xl font-bold">{packageData?.title}</h1>
+          <div className="flex w-full flex-col justify-center gap-3 md:flex-row">
+            <div className="flex flex-col items-center justify-center gap-3 rounded-md bg-blue-100 p-4">
+              <h3 className="text-center text-3xl font-semibold text-gray-900">
+                About this place
+              </h3>
+              <p className="text-sm text-slate-900">
+                {packageData?.description?.overview}
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-3 rounded-md bg-blue-100 p-4">
+              <h3 className="text-center text-3xl font-semibold text-gray-900">
+                Architecture
+              </h3>
+              <p className="text-sm text-slate-900">
+                {packageData?.description?.architecture}
+              </p>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-3 rounded-md bg-blue-100 p-4">
+              <h3 className="text-center text-3xl font-semibold text-gray-900">
+                History
+              </h3>
+              <p className="text-sm text-slate-900">
+                {packageData?.description?.history}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-[10vh] flex flex-col items-center gap-6 p-6 font-semibold">
+          {packageData?.details?.cities?.length > 0 && (
+            <>
+              <h2 className="text-center text-5xl">Cities</h2>
+              <Gallery keyName={"cities"} />
+            </>
+          )}
+          {packageData?.details?.culture?.length > 0 && (
+            <>
+              <h2 className="text-center text-5xl">Culture</h2>
+              <ShowCase keyName={"culture"} />
+            </>
+          )}
+          {packageData?.details?.food?.length > 0 && (
+            <>
+              <h2 className="text-center text-5xl">Food</h2>
+              <ShowCase keyName={"food"} />
+            </>
+          )}
+          {packageData?.details?.activities?.length > 0 && (
+            <>
+              <h2 className="text-center text-5xl">Activities</h2>
+              <ShowCase keyName={"activities"} />
+            </>
+          )}
+        </div>
+        <div className="flex flex-col gap-3 bg-gray-100 p-6">
+          <h6 className="text-2xl font-semibold">Ratings</h6>
+          <div className="flex items-center gap-5">
+            <Rate
+              allowHalf
+              defaultValue={rating}
+              value={rating}
+              onChange={(value) => setRating(value)}
+            />
+            <p className="font-semibold">{rating}</p>
+          </div>
         </div>
       </div>
-    </div>
+      {showBookingModal && (
+        <div className="fixed left-0 top-0 flex h-[100vh] w-full flex-col items-center justify-center bg-black bg-opacity-50">
+          <BookPackage />
+        </div>
+      )}
+    </PackageContext.Provider>
   );
 };
 

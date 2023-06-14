@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import signupImage from "../assets/signup.jpg";
 import { Regapi } from "../Authapi/Auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthOptions from "../Components/AuthOptions";
+import { GlobalContext } from "../App";
 
 const Signup = () => {
+  const { setUser } = useContext(GlobalContext);
   const navigate = useNavigate();
-  const [credentiaal, setCredential] = useState({
+  const [credential, setCredential] = useState({
     password: "",
     email: "",
     username: "",
@@ -16,19 +18,31 @@ const Signup = () => {
   });
   const credentailChanges = (e) => {
     setCredential({
-      ...credentiaal,
+      ...credential,
       [e.target.name]: e.target.value,
     });
   };
-  console.log(credentiaal);
   const signup = async (e) => {
     e.preventDefault();
     try {
-      if (credentiaal.password === credentiaal.confirmpassword) {
-        // const hlo = await Regapi(credentiaal.email, credentiaal.password);
-
+      if (credential.password === credential.confirmpassword) {
+        const userAuthResponse = await Regapi(
+          credential.email,
+          credential.password
+        );
+        const response = await fetch("http://localhost:3000/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: userAuthResponse.user.uid,
+            name: credential.username,
+            email: credential.email,
+          }),
+        });
         toast.success("successfully created!");
-        navigate("/");
+        navigate("/login");
       } else {
         toast.error("passwords do not match");
       }
@@ -65,7 +79,7 @@ const Signup = () => {
           className="w-full rounded-md border-slate-400 bg-black bg-opacity-50 p-2 text-lg text-white focus:bg-opacity-80 md:w-3/4 md:rounded-none md:border-b-[1px] md:bg-white md:text-black"
           type="text"
           placeholder="Enter your Name"
-          name="name"
+          name="username"
           onChange={(e) => credentailChanges(e)}
         />
         <input
@@ -96,6 +110,15 @@ const Signup = () => {
           <Link className="text-blue-600" to={"/login"}>
             Login
           </Link>
+        </p>
+        <p className="text-sm">
+          You are a guide?{" "}
+          <span
+            className="cursor-pointer text-blue-600"
+            onClick={() => setUser({})}
+          >
+            Guide Login
+          </span>
         </p>
         <button
           type="submit"

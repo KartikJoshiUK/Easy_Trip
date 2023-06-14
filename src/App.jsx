@@ -1,42 +1,52 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, Login, Signup, Error404 } from "./Pages";
-import { useState } from "react";
+import { createContext, useState } from "react";
+import RouterTourist from "./RouterTourist";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Error404, Login, Signup } from "./Pages";
+import UserType from "./Pages/UserType";
 import GuideRestration from "./guider/GuideRestration";
-import Dashmain from "./guider/dashboard/dashmain";
 
-import Package from "./Pages/Package";
-import Lens from "./Components/Lens";
-
+import RouterGuide from "./RouterGuide";
+export const GlobalContext = createContext();
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
+  const [user, setUser] = useState({ type: "tourist" });
   return (
-    <Router>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={loggedIn ? <Home /> : <Login login={setLoggedIn} />}
-        />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/package" element={<Package />} />
-        <Route exact path="/Lens" element={<Lens />} />
-        <Route
-          exact
-          path="*"
-          element={
-            <Error404
-              message="Looks like you lost your way"
-              link="/"
-              linkText="Go to home"
-            />
-          }
-        />
-        <Route exact path="/guide" element={<GuideRestration />} />
-        <Route exact path="/guidedashboard/*" element={<Dashmain />} />
-        
-      </Routes>
-    </Router>
+    <GlobalContext.Provider value={{ loggedIn, setLoggedIn, user, setUser }}>
+      <BrowserRouter>
+        <Routes>
+          {user?.type === undefined ? (
+            <>
+              <Route exact path="/login" element={<UserType />} />
+              <Route exact path="/signup" element={<UserType />} />
+              <Route exact path="/" element={<UserType />} />
+            </>
+          ) : user.type === "tourist" ? (
+            <>
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/signup" element={<Signup />} />
+              <Route exact path="/*" element={<RouterTourist />} />
+            </>
+          ) : (
+            <>
+              <Route exact path="/login" element={<GuideRestration />} />
+              <Route exact path="/signup" element={<GuideRestration />} />
+              <Route exact path="/*" element={<RouterGuide />} />
+            </>
+          )}
+          <Route
+            exact
+            path="/*"
+            element={
+              <Error404
+                message={"Url you entered is wrong"}
+                link={"/"}
+                linkText={"Go to Main Page"}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </GlobalContext.Provider>
   );
 }
 

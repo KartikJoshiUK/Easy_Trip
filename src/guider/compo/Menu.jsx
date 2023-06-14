@@ -5,21 +5,24 @@ import { Link } from 'react-router-dom';
 
 export default function Menupro() {
   return (
-    <Menu width={200} shadow="md" >
+    <Menu width={200} shadow="md">
       <Menu.Target>
-      <Avatar style={{ backgroundColor:"sky", verticalAlign: 'middle' }} className='cursor-pointer' >
-        J
-      </Avatar>
+        <Avatar
+          style={{ backgroundColor: "sky", verticalAlign: "middle" }}
+          className="cursor-pointer"
+        >
+          J
+        </Avatar>
       </Menu.Target>
 
       <Menu.Dropdown>
        <Link to="/guidedashboard/profile"><Menu.Item
-        icon= <UserOutlined /> >
+        icon= {<UserOutlined />} >
         GuiderProfile
         </Menu.Item>
       </Link>
         <Menu.Item
-        icon= <LogoutOutlined />>
+        icon= {<LogoutOutlined />}>
          Sign-out
         </Menu.Item>
       </Menu.Dropdown>

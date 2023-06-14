@@ -6,6 +6,8 @@ import { SignupGuide } from './guiderdetail/signup';
 import RegistrationForm from './guiderdetail/2nd';
 import VerificationForm from './guiderdetail/verificationdetail';
 import { createContext} from 'react';
+import { Typography } from 'antd';
+import { Link } from 'react-router-dom';
 export const ThemeContext = createContext()
   
 const initialvalue={
@@ -112,6 +114,7 @@ console.log(formik.errors)
         <Button disabled={!formik.isValid && active===0 ||  !formik2.isValid && active===1} variant='default' onClick={nextStep} style={{backgroundColor:"#7CB9E8"}}>Next step</Button>
       </Group>
     </Card>
+    <Link to="/"> <Typography.Link>You Are Already Signup? </Typography.Link></Link>
     </ThemeContext.Provider>
   );
 }

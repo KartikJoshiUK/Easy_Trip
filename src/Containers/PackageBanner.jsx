@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Carausel from "../Components/Carausel";
 import { AnimatePresence, motion } from "framer-motion";
+import BookPackage from "../Components/BookPackage";
+import { PackageContext } from "../Pages/Package";
 
 const PackageBanner = ({ data }) => {
-  const [journeyDetails, setJourneyDetails] = useState({
-    group: false,
-    people: 2,
-  });
+  const { setShowBookingModal, journeyDetails, setJourneyDetails } =
+    useContext(PackageContext);
   return (
-    <div className="flex flex-col p-6 pt-[10vh] md:flex-row">
+    <div className="relative flex flex-col p-6 pt-[10vh] md:flex-row">
       {/* CARAUSEL */}
       <div className="h-[50vh] w-full">
-        <Carausel data={data.images} />
+        {data?.images !== undefined && <Carausel data={data?.images} />}
       </div>
       {/* DETAILS */}
       <div className="flex w-full flex-col items-center justify-center gap-3 p-3">
@@ -100,19 +100,22 @@ const PackageBanner = ({ data }) => {
             {journeyDetails.group ? (
               <>
                 <span className="font-bold">Total Price : </span>₹
-                {data.price * journeyDetails.people}
+                {data?.price * journeyDetails.people}
               </>
             ) : (
               <>
-                <span className="font-bold">Price : </span>₹{data.price}/Person
+                <span className="font-bold">Price : </span>₹{data?.price}/Person
               </>
             )}
           </h4>
         </div>
         {/* Buttons */}
         <div className="w-[90%] md:w-1/2">
-          <button className="rouned-md w-full border-[1px] border-red-600 px-3 py-2 text-red-600 transition-colors hover:bg-red-600 hover:text-white">
-            Add to Cart
+          <button
+            className="rouned-md w-full bg-red-600 px-3 py-2 text-white transition-colors hover:bg-red-800 hover:text-white"
+            onClick={() => setShowBookingModal(true)}
+          >
+            Book this Package
           </button>
         </div>
       </div>

@@ -17,12 +17,13 @@ const Lens = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r h-full from-teal-400 to-blue-500 p-4 rounded-md text-white flex">
-        <div className='relative left-[150px]'>
-      <Typography.Title level={3}>Tourist-Lens</Typography.Title>
+    <div className='flex'>
+      <div className="w-1/2 bg-gradient-to-r from-teal-400 to-blue-500 p-4 rounded-md text-white flex h-screen items-center justify-center flex-col">
+        <div className=' p6'>
+    
       
       {cameraOn ? (
-        <div className="w-64 h-48 relative">
+        <div className="w-64 h-48">
           <Webcam audio={false} ref={webcamRef} screenshotFormat="image/png" mirrored={true} />
         </div>
       ) : (
@@ -44,8 +45,10 @@ const Lens = () => {
           </button>
         )}
       </div>
+          <img src={imgurl} className='h-[200px] w-[250px] rounded-md top-11' />
       </div>
-      <img src={imgurl} className='h-[200px] w-[250px] rounded-md relative left-[250px] top-11' />
+    </div>
+    <div>INFORMATION</div>
     </div>
   );
 };

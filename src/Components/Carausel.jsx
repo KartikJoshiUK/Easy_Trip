@@ -7,7 +7,7 @@ const Carausel = ({ data }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIndex((prev) => {
-        if (prev + 1 === data.length) return 0;
+        if (prev + 1 === data?.length) return 0;
         return prev + 1;
       });
     }, timeDelta * 1000);
@@ -22,13 +22,13 @@ const Carausel = ({ data }) => {
         }}
         className="flex h-full w-full"
       >
-        {data.map((imgObject, index) => (
+        {data?.map((image) => (
           <div
-            key={imgObject.image}
+            key={image}
             className="flex h-full w-full shrink-0 items-center justify-center"
           >
             <img
-              src={imgObject.image}
+              src={image}
               alt="carausel-image"
               className="h-full w-full object-cover"
             />
