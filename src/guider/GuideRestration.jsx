@@ -114,7 +114,7 @@ console.log(formik.errors)
         <Button disabled={!formik.isValid && active===0 ||  !formik2.isValid && active===1} variant='default' onClick={nextStep} style={{backgroundColor:"#7CB9E8"}}>Next step</Button>
       </Group>
     </Card>
-    <Link to="/"> <Typography.Link>You Are Already Signup? </Typography.Link></Link>
+    <Link to="/"> <Typography.Link className='ml-[305px]'>You Are Already Signup? </Typography.Link></Link>
     </ThemeContext.Provider>
   );
 }

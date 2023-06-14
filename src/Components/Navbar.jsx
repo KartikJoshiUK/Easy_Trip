@@ -6,6 +6,7 @@ import { createContext, useState } from "react";
 import SideBar from "./SideBar";
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
 
+
 // import ContactForm from "./Contactus";
 export const NavContext = createContext();
 
@@ -45,6 +46,7 @@ const Navbar = () => {
           >
             Sign up
           </Link>
+        
         </div>
         <button
           className="z-50 p-1 text-white md:hidden"

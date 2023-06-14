@@ -16,7 +16,7 @@ export default function Menupro() {
       </Menu.Target>
 
       <Menu.Dropdown>
-       <Link to="/guidedashboard/profile"><Menu.Item
+       <Link to="/profile"><Menu.Item
         icon= {<UserOutlined />} >
         GuiderProfile
         </Menu.Item>

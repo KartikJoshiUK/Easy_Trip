@@ -4,7 +4,7 @@ import Typography from 'antd/es/typography/Typography';
 
 const Review = () => {
   return (
-    <div className='flex flex-col ml-auto '>
+    <div className='flex flex-col items-center w-full'>
       <Typography.Title level={2} type="danger"> Customer-Review</Typography.Title>
     <Card className="w-[70%]  h-auto mt-2">
       <div className="flex items-center mb-4 ">

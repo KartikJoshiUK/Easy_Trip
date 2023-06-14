@@ -5,6 +5,7 @@ import Webcam from 'react-webcam';
 import { ThemeContext } from '../GuideRestration';
 
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
 export default function VerificationForm(){
   const {aadhar,pancard} =useContext(ThemeContext)
@@ -110,7 +111,7 @@ export default function VerificationForm(){
 
     </div>
     <div className="butto">
-      <Button default="primary" >Submit</Button>
+     <Link to="/" onClick={()=>{console.log("Sending to /")}}><Button default="primary" className='w-full' style={{ backgroundColor: '#096dd9' }} >Submit</Button></Link>
     </div>
     </div>
     

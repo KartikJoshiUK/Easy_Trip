@@ -19,11 +19,7 @@ const RouterGuide = () => {
   }
   return (
     <Routes>
-      <Route exact path="/" element={<GuideRestration />} />
-      <Route exact path="/guidedashboard/review" element={<Review />} />
-      {/* <Route exact path="/guidedashboard/order" element={<Order />} /> */}
-      <Route exact path="/guidedashboard/customer" element={<Coustmer />} />
-      <Route exact path="/guidedashboard/*" element={<Dashmain />} />
+      <Route exact path="/*" element={<Dashmain />} />
       <Route
         exact
         path="*"

@@ -1,4 +1,9 @@
 import { useEffect } from "react";
+import Kommunicate from "@kommunicate/kommunicate-chatbot-plugin";
+Kommunicate.init("20699085bb132e7b43419bac0c3885085", {
+  automaticChatOpenOnNavigation: true,
+  popupWidget: true
+});
 const Chat = () => {
   useEffect(() => {
     (function (d, m) {
@@ -16,6 +21,7 @@ const Chat = () => {
       window.kommunicate = m;
       m._globals = kommunicateSettings;
     })(document, window.kommunicate || {});
+    console.log("HELLO EVERY ONE");
   }, []);
   return <div></div>;
 };

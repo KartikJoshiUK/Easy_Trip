@@ -1,10 +1,10 @@
-import { doc, setDoc } from "firebase/firestore/lite";
+import { doc, getDoc, setDoc } from "firebase/firestore/lite";
 
 import uniqid from 'uniqid';
 import { db2, store } from "../../Firebaseconfig";
 import { ref } from "firebase/storage";
-
-const detailfirestore = async(initialvalues) => {
+let data  = []
+export const detailfirestore = async(initialvalues) => {
     try {
         await setDoc(doc(db2, "users", uniqid()), {
           name:initialvalues.name,
@@ -29,5 +29,14 @@ const detailfirestore = async(initialvalues) => {
       }
 }
 
+export const getAlldata = async ()=>{
+  const doc = db2.collection('orders')
+  doc.get().then((querySnapshot)=>{
+    querySnapshot.docs.map((d)=>{
+      console.log(d.data());
+    })
+  })
 
-export default {detailfirestore}
+}
+
+// export default {detailfirestore, getAlldata}

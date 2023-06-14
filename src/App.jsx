@@ -6,10 +6,12 @@ import UserType from "./Pages/UserType";
 import GuideRestration from "./guider/GuideRestration";
 
 import RouterGuide from "./RouterGuide";
+import Loginguide from "./guider/compo/loginguide";
+import Dashmain from "./guider/dashboard/dashmain";
 export const GlobalContext = createContext();
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [user, setUser] = useState({ type: "tourist" });
+  const [user, setUser] = useState();
   return (
     <GlobalContext.Provider value={{ loggedIn, setLoggedIn, user, setUser }}>
       <BrowserRouter>
@@ -28,7 +30,7 @@ function App() {
             </>
           ) : (
             <>
-              <Route exact path="/login" element={<GuideRestration />} />
+              <Route exact path="/login" element={<Loginguide/>} />
               <Route exact path="/signup" element={<GuideRestration />} />
               <Route exact path="/*" element={<RouterGuide />} />
             </>

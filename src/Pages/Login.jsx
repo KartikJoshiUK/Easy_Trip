@@ -121,7 +121,7 @@ const Login = () => {
         {/* Greeting-MD */}
         <div className="absolute hidden w-full bg-black bg-opacity-50 py-2 text-center md:top-[30%] md:block">
           <h1 className="text-xl font-bold text-white">
-            <span className="text-2xl">Hey There!</span> Planning a vacation?
+            <span className="text-2xl">Hey There!</span> want to plan another Trip
           </h1>
           <p className="text-slate-200">Please enter your credentials</p>
         </div>
