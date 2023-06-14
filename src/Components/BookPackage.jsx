@@ -46,6 +46,7 @@ const BookPackage = () => {
     number: null,
   });
   const handleBooking = async () => {
+    handlePayment();
     const data = {
       ...formData,
       ...user,
@@ -76,7 +77,18 @@ const BookPackage = () => {
         people: journeyDetails.people,
       }),
     });
+
   };
+
+  const handlePayment = () => {
+    const timeout = setTimeout(() => {
+      // 👇️ redirects to an external URL
+      window.location.replace('https://checkout.stripe.com/c/pay/cs_test_a1aEST9QwLXoku3HVESfCq0Tz4LQl1gZ1rjsoRLDU8IacDr2kIuZ1COe8B#fidkdWxOYHwnPyd1blpxYHZxWjA0S0xoUnVWRlRdbmFzREpIRDBSXExQUlx1bGRUXGR8cWppb259YDJLf11MUnVWRDFKfGlCfz00f1JKXEsxaGtgY19VVzJHXXxpYFIySWdUNTNAQGpvVjNkNTV2Z2x8dl8ycycpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVo3PWpiNHFhV0tifGI8M2o3PTwneCUl');
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }
+
   return (
     <motion.div
       className="flex  max-h-[500px] w-[80%] max-w-[500px] flex-col items-center justify-between bg-white"

@@ -49,7 +49,7 @@ const Package = ({ packageType }) => {
     >
       <div className="relative">
         <PackageMainBanner
-          image={packageData?.images[0]}
+          image={packageData?.images?.[0]}
           title={packageData?.title}
         />
         <PackageBanner data={packageData} />
